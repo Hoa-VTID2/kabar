@@ -1,0 +1,72 @@
+{
+  "common": {
+    "reload": "Reload"
+  },
+
+  "error": {
+    "token_is_expired": "Session expired, please log in again",
+    "something_went_wrong": "An error occurred, please try again",
+    "connection_timeout": "An error occurred, please try again",
+    "no_internet": "An error occurred, please try again"
+  },
+
+  "bottom_nav": {
+    "home": "Home",
+    "explore": "Explore",
+    "bookmark": "Bookmark",
+    "profile": "Profile"
+  },
+
+  "topic": {
+    "all": "All",
+    "sports": "Sports",
+    "politics": "Politics",
+    "bussiness": "Bussiness",
+    "health": "Health",
+    "travel": "Travel",
+    "science": "Science",
+    "fashion": "Fashion",
+    "technology": "Technology",
+    "art": "Art",
+    "money": "Money"
+  },
+
+  "list_view": {
+    "no_data": "No data available",
+    "refresh_complete": "Data refreshed successfully",
+    "refresh_fail": "Failed to refresh data"
+  },
+
+  "popup": {
+    "close": "Close"
+  },
+
+  "login": {
+    "login_title": "Login",
+    "user_name_label": "Username",
+    "user_name_hint": "Please enter your username",
+    "password_label": "Password",
+    "password_hint": "Please enter your password",
+    "login_button": "Login",
+    "username_null_error": "Invalid Username",
+    "password_null_error": "Invalid Password"
+  },
+
+  "home": {
+    "trending": "Trending",
+    "latest": "Latest",
+    "see_all": "See all",
+    "search": "Search",
+    "notification": "Notification"
+  },
+
+  "search": {
+    "news": "News",
+    "topics": "Topics",
+    "author": "Author",
+    "save": "Save",
+    "saved": "Saved",
+    "following": "Following",
+    "follow": "Follow"
+  }
+}

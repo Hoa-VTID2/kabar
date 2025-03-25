@@ -1,0 +1,167 @@
+name: kabar
+description: A new Flutter project.
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Router
+  auto_route: ^10.0.0
+
+  cupertino_icons: ^1.0.8
+
+  # Localization
+  easy_localization: ^3.0.7+1
+
+  # Logger
+  easy_logger: ^0.0.2
+  logger: ^2.5.0
+  pretty_dio_logger: ^1.4.0
+
+  # Resource
+  flutter_gen_runner: ^5.9.0
+  flutter_svg: ^2.0.17
+
+  #Freezed
+  freezed_annotation: 3.0.0
+  json_annotation: ^4.9.0
+
+  #Compare objects
+  equatable: ^2.0.7
+
+  #State management
+  provider: ^6.1.2
+  state_notifier: ^1.0.0
+  flutter_state_notifier: ^1.0.0
+
+  #DI
+  injectable: ^2.5.0
+  get_it: ^8.0.3
+
+  #Network
+  retrofit: ^4.4.2
+  dio: ^5.8.0+1
+  connectivity_plus: ^6.1.3
+
+  # A tuple data structure.
+  tuple: ^2.0.2
+
+  #Formatter
+  intl: ^0.19.0
+
+  # replace for SizeBox
+  gap: ^3.0.1
+
+  #Badges
+  badges: ^3.1.2
+
+  #Visibility detector for widgets
+  focus_detector: ^2.0.1
+
+  #pull to refresh
+  pull_to_refresh: ^2.0.0
+
+  #Collection
+  collection: ^1.19.1
+
+  #Display time ago
+  timeago: ^3.7.0
+
+  #Expandable
+  expandable: ^5.0.1
+
+  #Open browser
+  url_launcher: ^6.2.2
+
+  #Save to local
+  shared_preferences: ^2.2.2
+
+  #Show toast
+  fluttertoast: ^8.2.12
+
+  #Splash screen
+  flutter_native_splash: ^2.4.5
+
+  #Laucher icon
+  flutter_launcher_icons: ^0.14.3
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+  # Generating files
+  build_runner: ^2.4.15
+  json_serializable: ^6.9.4
+
+  #Router
+  auto_route_generator: ^10.0.0
+
+  #Generator for unions/pattern-matching/copy
+  freezed: 3.0.0
+
+  #DI
+  injectable_generator: ^2.7.0
+
+  #Network
+  retrofit_generator: ^9.1.9
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/translations/
+    - assets/icons/
+    - assets/images/
+    - assets/fonts/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Poppins-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Poppins-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Poppins-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Thin.ttf
+          weight: 100
+
+flutter_gen:
+  line_length: 80
+  integrations:
+    flutter_svg: true
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/logo.png
+  android_12:
+    image: assets/images/logo.png
+    icon_background_color: "#ffffff"
+  background_image: assets/images/logo.png
+  fullscreen: true
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo.png"
+  adaptive_icon_background: "#ffffff"

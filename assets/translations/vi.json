@@ -1,0 +1,72 @@
+{
+  "common": {
+    "reload": "Tải lại"
+  },
+
+  "error": {
+    "token_is_expired": "Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại",
+    "something_went_wrong": "Đã xảy ra lỗi, vui lòng thử lại",
+    "connection_timeout": "Đã xảy ra lỗi, vui lòng thử lại",
+    "no_internet": "Đã xảy ra lỗi, vui lòng thử lại"
+  },
+
+  "bottom_nav": {
+    "home": "Trang chủ",
+    "explore": "Khám phá",
+    "bookmark": "Lưu",
+    "profile": "Hồ sơ"
+  },
+
+  "topic": {
+    "all": "Tất cả",
+    "sports": "Thể thao",
+    "politics": "Chính trị",
+    "bussiness": "Kinh doanh",
+    "health": "Sức khỏe",
+    "travel": "Du lịch",
+    "science": "Khoa học",
+    "fashion": "Thời trang",
+    "technology": "Công nghệ",
+    "art": "Nghệ thuật",
+    "money": "Tài chính"
+  },
+
+  "list_view": {
+    "no_data": "Không có dữ liệu",
+    "refresh_complete": "Dữ liệu đã được làm mới",
+    "refresh_fail": "Làm mới dữ liệu thất bại"
+  },
+
+  "popup": {
+    "close": "Đóng"
+  },
+
+  "login": {
+    "login_title": "Đăng nhập",
+    "user_name_label": "Tên đăng nhập",
+    "user_name_hint": "Vui lòng nhập tên đăng nhập",
+    "password_label": "Mật khẩu",
+    "password_hint": "Vui lòng nhập mật khẩu",
+    "login_button": "Đăng nhập",
+    "username_null_error": "Tên đăng nhập không hợp lệ",
+    "password_null_error": "Mật khẩu không hợp lệ"
+  },
+
+  "home": {
+    "trending": "Xu hướng",
+    "latest": "Mới nhất",
+    "see_all": "Xem tất cả",
+    "search": "Tìm kiếm",
+    "notification": "Thông báo"
+  },
+
+  "search": {
+    "news": "Tin tức",
+    "topics": "Chủ đề",
+    "author": "Tác giả",
+    "save": "Lưu",
+    "saved": "Đã lưu",
+    "following": "Đang theo dõi",
+    "follow": "Theo dõi"
+  }
+}
