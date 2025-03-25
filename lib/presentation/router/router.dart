@@ -4,9 +4,9 @@ import 'package:injectable/injectable.dart';
 import 'package:kabar/domain/entities/news.dart';
 import 'package:kabar/presentation/views/pages/detail/detail_page.dart';
 import 'package:kabar/presentation/views/pages/home/home_page.dart';
-import 'package:kabar/presentation/views/pages/home_notification/home_notification_page.dart';
 import 'package:kabar/presentation/views/pages/home_top/home_top_page.dart';
 import 'package:kabar/presentation/views/pages/login/login_page.dart';
+import 'package:kabar/presentation/views/pages/profile/profile_page.dart';
 import 'package:kabar/presentation/views/pages/search/search_page.dart';
 import 'package:kabar/presentation/views/pages/signup/signup_page.dart';
 
@@ -25,7 +25,7 @@ class AppRouter extends RootStackRouter {
           page: HomeRoute.page,
           children: [
             AutoRoute(page: HomeTopRoute.page),
-            AutoRoute(page: HomeNotificationRoute.page),
+            AutoRoute(page: ProfileRoute.page),
           ],
         ),
       ];

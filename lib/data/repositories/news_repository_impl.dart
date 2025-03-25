@@ -151,6 +151,9 @@ There has been a growing frustration among Ukraine's leadership with Berlin, whi
         image: Assets.images.bbc.path,
         isAuthor: true,
         follower: 10000,
-        followed: true);
+        followed: true,
+        following: 0,
+        newsNumber: 0,
+    );
   }
 }

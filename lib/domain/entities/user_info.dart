@@ -10,6 +10,8 @@ abstract class UserInfo with _$UserInfo {
     required String image,
     required bool isAuthor,
     required int follower,
+    required int following,
+    required int newsNumber,
     @Default(false) bool followed,
   }) = _UserInfo;
 }

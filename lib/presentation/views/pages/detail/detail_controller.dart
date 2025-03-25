@@ -18,15 +18,34 @@ class DetailController extends BaseController<DetailState> {
   }
 
   void followAuthor() {
-      final News? news = state.news?.copyWith(author: state.news?.author.copyWith(followed: true) ?? const UserInfo(id: 0, fullName: '', image: '', isAuthor: true, follower: 0));
-      if(news!= null) {
-        state = state.copyWith(news: news);
-      }
+    final News? news = state.news?.copyWith(
+        author: state.news?.author.copyWith(followed: true) ??
+            const UserInfo(
+                id: 0,
+                fullName: '',
+                image: '',
+                isAuthor: true,
+                follower: 0,
+                following: 0,
+                newsNumber: 0));
+    if (news != null) {
+      state = state.copyWith(news: news);
+    }
   }
+
   void unFollowAuthor() {
-      final News? news = state.news?.copyWith(author: state.news?.author.copyWith(followed: false) ?? const UserInfo(id: 0, fullName: '', image: '', isAuthor: true, follower: 0));
-      if(news!= null) {
-        state = state.copyWith(news: news);
-      }
+    final News? news = state.news?.copyWith(
+        author: state.news?.author.copyWith(followed: false) ??
+            const UserInfo(
+                id: 0,
+                fullName: '',
+                image: '',
+                isAuthor: true,
+                follower: 0,
+                following: 0,
+                newsNumber: 0));
+    if (news != null) {
+      state = state.copyWith(news: news);
+    }
   }
 }

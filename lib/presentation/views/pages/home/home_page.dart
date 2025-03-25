@@ -21,24 +21,17 @@ class HomePage extends BasePage<HomeController, HomeState> {
   Widget builder(BuildContext context) {
     final navigationItems = _getNavigationItems();
     final routeList = navigationItems.map((e) => e.page).toList();
-    final notificationRoutList = navigationItems.map((e) {
-      if (e.label == LocaleKeys.bottom_nav_home.tr()) {
-        return const HomeNotificationRoute();
-      } else {
-        return e.page;
-      }
-    }).toList();
 
     return Selector<HomeState, bool>(
         selector: (_, state) => state.isNotificationPage,
         builder: (_, isNotificationPage, __) {
           return AutoTabsScaffold(
-            appBarBuilder: (context, tabsRouter) => PreferredSize(
-                preferredSize: const Size.fromHeight(80),
-                child: (!isNotificationPage || tabsRouter.activeIndex != 0)
-                    ? const Header()
-                    : const NotificationHeader()),
-            routes: isNotificationPage ? notificationRoutList : routeList,
+            // appBarBuilder: (context, tabsRouter) => PreferredSize(
+            //     preferredSize: const Size.fromHeight(80),
+            //     child: (!isNotificationPage || tabsRouter.activeIndex != 0)
+            //         ? const Header()
+            //         : const NotificationHeader()),
+            routes: routeList,
             bottomNavigationBuilder:
                 (BuildContext context, TabsRouter tabsRouter) {
               return AppBottomNavigationBar(
@@ -103,7 +96,7 @@ class HomePage extends BasePage<HomeController, HomeState> {
           colorFilter:
               const ColorFilter.mode(AppColors.primaryColor, BlendMode.srcIn),
         ),
-        page: const HomeTopRoute(),
+        page: const ProfileRoute(),
       ),
     ];
   }

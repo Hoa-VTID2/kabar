@@ -199,7 +199,8 @@ class DetailPage extends BasePage<DetailController, DetailState> {
             left: 0,
             right: 0,
             child: Container(
-              padding: const EdgeInsets.fromLTRB(24, 34, 24, 34),
+              height: 78,
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
               decoration: const BoxDecoration(
                 color: AppColors.white,
                 border: Border(
@@ -220,10 +221,26 @@ class DetailPage extends BasePage<DetailController, DetailState> {
                 children: [
                   InkWell(
                     child: Row(
+                      spacing: 4,
                       children: [
-
+                        SvgPicture.asset(Assets.icons.heart.path),
+                        Text('24.5K',style: context.themeOwn().textTheme?.textMedium,)
                       ],
                     ),
+                  ),
+                  const Gap(16),
+                  InkWell(
+                    child: Row(
+                      spacing: 4,
+                      children: [
+                        SvgPicture.asset(Assets.icons.cmt.path),
+                        Text('1K',style: context.themeOwn().textTheme?.textMedium,)
+                      ],
+                    ),
+                  ),
+                  const Expanded(child: Gap(0)),
+                  InkWell(
+                    child: SvgPicture.asset(Assets.icons.bookmarkFill.path),
                   )
                 ],
               ),
