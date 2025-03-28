@@ -9,7 +9,7 @@ import 'package:kabar/gen/assets.gen.dart';
 import 'package:kabar/presentation/base/base_controller.dart';
 import 'package:kabar/presentation/base/page_status.dart';
 import 'package:kabar/presentation/views/pages/home_top/home_top_state.dart';
-import 'package:kabar/shared/extensions/datetime.dart';
+import 'package:kabar/shared/extensions/datetime_extensions.dart';
 
 @injectable
 class HomeTopController extends BaseController<HomeTopState> {
@@ -48,22 +48,26 @@ class HomeTopController extends BaseController<HomeTopState> {
   News getTrendNews() {
     return newsRepository.getTrendNews().data ??
         News(
+          id: 0,
+          img: Assets.images.img.path,
+          topic: 'topic',
+          fullName: 'content',
+          detail: 'detail content',
+          author: UserInfo(
             id: 0,
-            img: Assets.images.img.path,
-            topic: 'topic',
-            fullName: 'content',
-            detail: 'detail content',
-            author: UserInfo(
-              id: 0,
-              fullName: 'Name',
-              image: Assets.images.avtPlacehoder.path,
-              isAuthor: true,
-              follower: 0,
-              following: 0,
-              newsNumber: 0,
-            ),
-            time: DateTime.now(),
-            category: Category.all);
+            fullName: 'Name',
+            image: Assets.images.avtPlacehoder.path,
+            isAuthor: true,
+            follower: 0,
+            following: 0,
+          ),
+          time: DateTime.now(),
+          category: Category.all,
+          likes: 24500,
+          comments: 1000,
+          saved: true,
+          liked: true,
+        );
   }
 
   Future<void> getAllNotifications({DateTime? day}) async {

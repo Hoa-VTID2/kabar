@@ -56,5 +56,34 @@ abstract class  LocaleKeys {
   static const search_following = 'search.following';
   static const search_follow = 'search.follow';
   static const search = 'search';
+  static const profile_follower = 'profile.follower';
+  static const profile_following = 'profile.following';
+  static const profile_news = 'profile.news';
+  static const profile_edit_profile = 'profile.edit_profile';
+  static const profile_website = 'profile.website';
+  static const profile_recent = 'profile.recent';
+  static const profile_settings = 'profile.settings';
+  static const profile = 'profile';
+  static const settings_notification = 'settings.notification';
+  static const settings_security = 'settings.security';
+  static const settings_help = 'settings.help';
+  static const settings_dark_mode = 'settings.dark_mode';
+  static const settings_logout = 'settings.logout';
+  static const settings = 'settings';
+  static const edit_profile_title = 'edit_profile.title';
+  static const edit_profile_username = 'edit_profile.username';
+  static const edit_profile_full_name = 'edit_profile.full_name';
+  static const edit_profile_email = 'edit_profile.email';
+  static const edit_profile_phone_number = 'edit_profile.phone_number';
+  static const edit_profile_bio = 'edit_profile.bio';
+  static const edit_profile_website = 'edit_profile.website';
+  static const edit_profile = 'edit_profile';
+  static const comment_title = 'comment.title';
+  static const comment_place_holder = 'comment.place_holder';
+  static const comment_likes = 'comment.likes';
+  static const comment_reply = 'comment.reply';
+  static const comment_see_more = 'comment.see_more';
+  static const comment_hide = 'comment.hide';
+  static const comment = 'comment';
 
 }

@@ -85,6 +85,16 @@ extension DateTimeExtensions on DateTime {
     }
   }
 
+  String get getTimeAgoWithoutAgo {
+    timeago.setLocaleMessages('en_short_custom', timeago.EnShortMessages());
+    final String ago = timeago.format(this, locale: 'en_short_custom');
+    if(ago[0] == '~') {
+      return ago.substring(1);
+    } else {
+      return ago;
+    }
+  }
+
   String format({
     DateTimeType type = DateTimeType.date,
     bool utc = false,

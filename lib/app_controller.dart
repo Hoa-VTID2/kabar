@@ -1,9 +1,9 @@
+import 'package:injectable/injectable.dart';
 import 'package:kabar/app_state.dart';
 import 'package:kabar/domain/entities/user_info.dart';
 import 'package:kabar/domain/usecases/check_logined_use_case.dart';
 import 'package:kabar/domain/usecases/get_user_info_use_case.dart';
 import 'package:kabar/domain/usecases/remove_access_token_use_case.dart';
-import 'package:injectable/injectable.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 @singleton
@@ -76,5 +76,9 @@ class AppController extends StateNotifier<AppState> {
     if (mounted) {
       state = state.copyWith(failureGetInitData: null);
     }
+  }
+
+  void logout() {
+    state = state.copyWith(userInfo: null);
   }
 }

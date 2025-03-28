@@ -1,8 +1,8 @@
+import 'package:injectable/injectable.dart';
 import 'package:kabar/data/datasources/remote/models/response/login_response_model.dart';
 import 'package:kabar/data/datasources/remote/models/user_info_model.dart';
 import 'package:kabar/data/datasources/remote/services/api_service.dart';
 import 'package:kabar/shared/common/exception_converter.dart';
-import 'package:injectable/injectable.dart';
 
 abstract class AuthRemoteDataSource {
   Future<LoginResponseModel> login({
@@ -42,8 +42,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         dateOfBirth: '01/01/2000',
         email: 'email@example.com',
         gender: 'male',
-        identifierCode: 'identifierCode',
-        name: 'Test',
+        identifierCode: 'wilson20',
+        name: 'Wilson Franci',
         phoneNumber: '0123456789',
       );
 

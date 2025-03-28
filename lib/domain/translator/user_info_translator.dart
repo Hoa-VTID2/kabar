@@ -10,7 +10,7 @@ class UserInfoTranslator {
       isAuthor: true,
       follower: 2156,
       following: 567,
-      newsNumber: 23,
+      about: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     );
   }
 }

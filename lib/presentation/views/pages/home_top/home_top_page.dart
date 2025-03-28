@@ -22,7 +22,7 @@ import 'package:kabar/presentation/views/widgets/news_card/news_card.dart';
 import 'package:kabar/presentation/views/widgets/text_field/app_text_field.dart';
 import 'package:kabar/shared/common/error_handler.dart';
 import 'package:kabar/shared/extensions/context_extensions.dart';
-import 'package:kabar/shared/extensions/datetime.dart';
+import 'package:kabar/shared/extensions/datetime_extensions.dart';
 import 'package:kabar/shared/extensions/string_extensions.dart';
 import 'package:provider/provider.dart';
 

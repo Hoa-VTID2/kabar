@@ -17,7 +17,6 @@ class AuthorRepositoryImpl implements AuthorRepository {
         follower: 1200000,
         followed: true,
         following: 0,
-        newsNumber: 0,
       ),
       UserInfo(
         id: 2,
@@ -26,7 +25,6 @@ class AuthorRepositoryImpl implements AuthorRepository {
         isAuthor: true,
         follower: 959000,
         following: 0,
-        newsNumber: 0,
       ),
       UserInfo(
         id: 3,
@@ -36,7 +34,6 @@ class AuthorRepositoryImpl implements AuthorRepository {
         follower: 452000,
         followed: true,
         following: 0,
-        newsNumber: 0,
       ),
       UserInfo(
         id: 4,
@@ -46,7 +43,6 @@ class AuthorRepositoryImpl implements AuthorRepository {
         follower: 325000,
         followed: true,
         following: 0,
-        newsNumber: 0,
       ),
       UserInfo(
         id: 5,
@@ -55,7 +51,6 @@ class AuthorRepositoryImpl implements AuthorRepository {
         isAuthor: true,
         follower: 21000,
         following: 0,
-        newsNumber: 0,
       ),
       UserInfo(
         id: 6,
@@ -64,7 +59,6 @@ class AuthorRepositoryImpl implements AuthorRepository {
         isAuthor: true,
         follower: 18000,
         following: 0,
-        newsNumber: 0,
       ),
       UserInfo(
         id: 7,
@@ -73,7 +67,6 @@ class AuthorRepositoryImpl implements AuthorRepository {
         isAuthor: true,
         follower: 15000,
         following: 0,
-        newsNumber: 0,
       ),
     ];
     if (name == null) {

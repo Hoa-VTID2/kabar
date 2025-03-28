@@ -14,6 +14,10 @@ abstract class News with _$News{
     required String detail,
     required UserInfo author,
     required DateTime time,
+    required int likes,
+    required int comments,
+    required bool saved,
+    required bool liked,
     required Category category,
   }) = _News;
 }

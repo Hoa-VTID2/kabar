@@ -8,11 +8,13 @@ import 'package:kabar/gen/assets.gen.dart';
 import 'package:kabar/presentation/base/base_page.dart';
 import 'package:kabar/presentation/resources/colors.dart';
 import 'package:kabar/presentation/resources/locale_keys.dart';
+import 'package:kabar/presentation/router/router.dart';
 import 'package:kabar/presentation/views/pages/detail/detail_controller.dart';
 import 'package:kabar/presentation/views/pages/detail/detail_state.dart';
 import 'package:kabar/presentation/views/widgets/app_button.dart';
 import 'package:kabar/shared/extensions/context_extensions.dart';
-import 'package:kabar/shared/extensions/datetime.dart';
+import 'package:kabar/shared/extensions/datetime_extensions.dart';
+import 'package:kabar/shared/extensions/int_extensions.dart';
 import 'package:provider/provider.dart';
 
 @RoutePage()
@@ -158,7 +160,7 @@ class DetailPage extends BasePage<DetailController, DetailState> {
                         ),
                         Image.asset(
                           stateNews.img,
-                          height: 248,
+                          fit: BoxFit.fitWidth,
                         ),
                         Column(
                           mainAxisSize: MainAxisSize.min,
@@ -186,6 +188,7 @@ class DetailPage extends BasePage<DetailController, DetailState> {
                               ?.textMedium
                               ?.copyWith(color: AppColors.subTextColor),
                         ),
+                        const SizedBox(height: 78,),
                       ],
                     ),
                   ),
@@ -195,19 +198,18 @@ class DetailPage extends BasePage<DetailController, DetailState> {
           ),
         ),
         Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: 78,
-              padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
-              decoration: const BoxDecoration(
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: Container(
+            height: 78,
+            padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+            decoration: const BoxDecoration(
                 color: AppColors.white,
                 border: Border(
-                  top: BorderSide(
-                    color: Colors.transparent,
-                  )
-                ),
+                    top: BorderSide(
+                  color: Colors.transparent,
+                )),
                 boxShadow: [
                   BoxShadow(
                     color: Color.fromRGBO(128, 128, 128, 0.2),
@@ -215,36 +217,81 @@ class DetailPage extends BasePage<DetailController, DetailState> {
                     spreadRadius: 1,
                     offset: Offset(0, -1),
                   ),
-                ]
-              ),
-              child: Row(
-                children: [
-                  InkWell(
-                    child: Row(
-                      spacing: 4,
-                      children: [
-                        SvgPicture.asset(Assets.icons.heart.path),
-                        Text('24.5K',style: context.themeOwn().textTheme?.textMedium,)
-                      ],
-                    ),
-                  ),
-                  const Gap(16),
-                  InkWell(
-                    child: Row(
-                      spacing: 4,
-                      children: [
-                        SvgPicture.asset(Assets.icons.cmt.path),
-                        Text('1K',style: context.themeOwn().textTheme?.textMedium,)
-                      ],
-                    ),
-                  ),
-                  const Expanded(child: Gap(0)),
-                  InkWell(
-                    child: SvgPicture.asset(Assets.icons.bookmarkFill.path),
-                  )
-                ],
-              ),
-            ),
+                ]),
+            child: Selector<DetailState, News>(
+                selector: (p0, state) => state.news ?? news,
+                builder: (context, news, child) {
+                  return Row(
+                    children: [
+                      if (news.liked)
+                        InkWell(
+                          child: Row(
+                            spacing: 4,
+                            children: [
+                              SvgPicture.asset(Assets.icons.heart.path),
+                              Text(
+                                news.likes.shortNumber,
+                                style: context.themeOwn().textTheme?.textMedium,
+                              )
+                            ],
+                          ),
+                          onTap: () =>
+                              context.read<DetailController>().like(false),
+                        )
+                      else
+                        InkWell(
+                          child: Row(
+                            spacing: 4,
+                            children: [
+                              SvgPicture.asset(Assets.icons.heartOutline.path),
+                              Text(
+                                news.likes.shortNumber,
+                                style: context.themeOwn().textTheme?.textMedium,
+                              )
+                            ],
+                          ),
+                          onTap: () =>
+                              context.read<DetailController>().like(true),
+                        ),
+                      const Gap(16),
+                      InkWell(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                          child: Row(
+                            spacing: 4,
+                            children: [
+                              SvgPicture.asset(Assets.icons.cmt.path),
+                              Text(
+                                news.comments.shortNumber,
+                                style: context.themeOwn().textTheme?.textMedium,
+                              )
+                            ],
+                          ),
+                        ),
+                        onTap: () => context.pushRoute(CommentRoute(newsId: news.id)),
+                      ),
+                      const Expanded(child: Gap(0)),
+                      if (news.saved)
+                        InkWell(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 0, 24, 0),
+                            child: SvgPicture.asset(
+                                Assets.icons.bookmarkFill.path),
+                          ),
+                          onTap: () => context.read<DetailController>().save(false),
+                        )
+                      else
+                        InkWell(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 0, 24, 0),
+                            child: SvgPicture.asset(Assets.icons.bookmark.path),
+                          ),
+                          onTap: () => context.read<DetailController>().save(true),
+                        )
+                    ],
+                  );
+                }),
+          ),
         )
       ],
     );

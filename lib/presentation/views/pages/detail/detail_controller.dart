@@ -27,7 +27,7 @@ class DetailController extends BaseController<DetailState> {
                 isAuthor: true,
                 follower: 0,
                 following: 0,
-                newsNumber: 0));
+                ));
     if (news != null) {
       state = state.copyWith(news: news);
     }
@@ -43,7 +43,43 @@ class DetailController extends BaseController<DetailState> {
                 isAuthor: true,
                 follower: 0,
                 following: 0,
-                newsNumber: 0));
+                ));
+    if (news != null) {
+      state = state.copyWith(news: news);
+    }
+  }
+
+  void like(bool liked){
+    final News? news;
+    if(liked) {
+      news = state.news?.copyWith(
+          liked: true,
+        likes: state.news!.likes+1,
+      );
+    }
+    else{
+      news = state.news?.copyWith(
+          liked: false,
+        likes: state.news!.likes-1,
+      );
+    }
+    if (news != null) {
+      state = state.copyWith(news: news);
+    }
+  }
+
+  void save(bool saved) {
+    final News? news;
+    if(saved) {
+      news = state.news?.copyWith(
+        saved: true,
+      );
+    }
+    else{
+      news = state.news?.copyWith(
+        saved: false,
+      );
+    }
     if (news != null) {
       state = state.copyWith(news: news);
     }

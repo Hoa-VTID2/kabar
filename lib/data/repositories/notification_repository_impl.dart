@@ -5,7 +5,7 @@ import 'package:kabar/domain/enum/action.dart';
 import 'package:kabar/domain/repositories/notification_repository.dart';
 import 'package:kabar/gen/assets.gen.dart';
 import 'package:kabar/shared/common/result.dart';
-import 'package:kabar/shared/extensions/datetime.dart';
+import 'package:kabar/shared/extensions/datetime_extensions.dart';
 
 @Injectable(as: NotificationRepository)
 class NotificationRepositoryImpl implements NotificationRepository {
@@ -22,7 +22,6 @@ class NotificationRepositoryImpl implements NotificationRepository {
           isAuthor: true,
           follower: 10000,
           following: 0,
-          newsNumber: 0,
         ),
         action: UserAction.posted,
         newsTopic: 'europe news',
@@ -39,7 +38,6 @@ class NotificationRepositoryImpl implements NotificationRepository {
           isAuthor: true,
           follower: 10000,
           following: 0,
-          newsNumber: 0,
         ),
         action: UserAction.follow,
         sendAt: DateTime.now().subtract(const Duration(hours: 1)),
@@ -53,7 +51,6 @@ class NotificationRepositoryImpl implements NotificationRepository {
           isAuthor: true,
           follower: 10000,
           following: 0,
-          newsNumber: 0,
         ),
         action: UserAction.comment,
         newsName:
@@ -69,7 +66,6 @@ class NotificationRepositoryImpl implements NotificationRepository {
           isAuthor: true,
           follower: 10000,
           following: 0,
-          newsNumber: 0,
         ),
         action: UserAction.follow,
         sendAt: DateTime.now().subtract(const Duration(days: 1)),
@@ -83,7 +79,6 @@ class NotificationRepositoryImpl implements NotificationRepository {
           isAuthor: true,
           follower: 10000,
           following: 0,
-          newsNumber: 0,
         ),
         action: UserAction.like,
         newsName:
@@ -99,7 +94,6 @@ class NotificationRepositoryImpl implements NotificationRepository {
           isAuthor: true,
           follower: 10000,
           following: 0,
-          newsNumber: 0,
         ),
         action: UserAction.posted,
         newsTopic: 'travel news',
@@ -116,7 +110,6 @@ class NotificationRepositoryImpl implements NotificationRepository {
           isAuthor: true,
           follower: 10000,
           following: 0,
-          newsNumber: 0,
         ),
         action: UserAction.like,
         newsName:

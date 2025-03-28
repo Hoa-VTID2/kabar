@@ -68,5 +68,42 @@
     "saved": "Saved",
     "following": "Following",
     "follow": "Follow"
+  },
+
+  "profile": {
+    "follower": "Followers",
+    "following": "Following",
+    "news": "News",
+    "edit_profile": "Edit profile",
+    "website": "Website",
+    "recent": "Recent",
+    "settings": "Settings"
+  },
+
+  "settings": {
+    "notification": "Notification",
+    "security": "Security",
+    "help": "Help",
+    "dark_mode": "Dark Mode",
+    "logout": "Logout"
+  },
+
+  "edit_profile": {
+    "title": "Edit Profile",
+    "username": "Username",
+    "full_name": "Full Name",
+    "email": "Email Address",
+    "phone_number": "Phone Number",
+    "bio": "Bio",
+    "website": "Website"
+  },
+
+  "comment": {
+    "title": "Comments",
+    "place_holder": "Type your comment",
+    "likes": "likes",
+    "reply": "reply",
+    "see_more": "See more",
+    "hide": "hide"
   }
 }

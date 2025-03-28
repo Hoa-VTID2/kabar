@@ -7,7 +7,7 @@ import 'package:kabar/gen/assets.gen.dart';
 import 'package:kabar/presentation/resources/colors.dart';
 import 'package:kabar/presentation/router/router.dart';
 import 'package:kabar/shared/extensions/context_extensions.dart';
-import 'package:kabar/shared/extensions/datetime.dart';
+import 'package:kabar/shared/extensions/datetime_extensions.dart';
 
 class NewsCard extends StatelessWidget {
   const NewsCard({

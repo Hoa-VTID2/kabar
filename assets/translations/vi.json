@@ -13,7 +13,7 @@
   "bottom_nav": {
     "home": "Trang chủ",
     "explore": "Khám phá",
-    "bookmark": "Lưu",
+    "bookmark": "Lưu trữ",
     "profile": "Hồ sơ"
   },
 
@@ -33,7 +33,7 @@
 
   "list_view": {
     "no_data": "Không có dữ liệu",
-    "refresh_complete": "Dữ liệu đã được làm mới",
+    "refresh_complete": "Làm mới dữ liệu thành công",
     "refresh_fail": "Làm mới dữ liệu thất bại"
   },
 
@@ -68,5 +68,42 @@
     "saved": "Đã lưu",
     "following": "Đang theo dõi",
     "follow": "Theo dõi"
+  },
+
+  "profile": {
+    "follower": "Người theo dõi",
+    "following": "Đang theo dõi",
+    "news": "Tin tức",
+    "edit_profile": "Chỉnh sửa hồ sơ",
+    "website": "Trang web",
+    "recent": "Gần đây",
+    "settings": "Cài đặt"
+  },
+
+  "settings": {
+    "notification": "Thông báo",
+    "security": "Bảo mật",
+    "help": "Trợ giúp",
+    "dark_mode": "Chế độ tối",
+    "logout": "Đăng xuất"
+  },
+
+  "edit_profile": {
+    "title": "Chỉnh sửa hồ sơ",
+    "username": "Tên đăng nhập",
+    "full_name": "Họ và tên",
+    "email": "Địa chỉ email",
+    "phone_number": "Số điện thoại",
+    "bio": "Giới thiệu",
+    "website": "Trang web"
+  },
+
+  "comment": {
+    "title": "Bình luận",
+    "place_holder": "Nhập bình luận của bạn",
+    "likes": "lượt thích",
+    "reply": "trả lời",
+    "see_more": "Xem thêm",
+    "hide": "Ẩn"
   }
 }

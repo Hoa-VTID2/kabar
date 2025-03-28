@@ -26,12 +26,8 @@ class HomePage extends BasePage<HomeController, HomeState> {
         selector: (_, state) => state.isNotificationPage,
         builder: (_, isNotificationPage, __) {
           return AutoTabsScaffold(
-            // appBarBuilder: (context, tabsRouter) => PreferredSize(
-            //     preferredSize: const Size.fromHeight(80),
-            //     child: (!isNotificationPage || tabsRouter.activeIndex != 0)
-            //         ? const Header()
-            //         : const NotificationHeader()),
             routes: routeList,
+
             bottomNavigationBuilder:
                 (BuildContext context, TabsRouter tabsRouter) {
               return AppBottomNavigationBar(

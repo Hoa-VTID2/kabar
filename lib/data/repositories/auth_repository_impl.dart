@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import 'package:kabar/data/datasources/local/auth_local_data_source.dart';
 import 'package:kabar/data/datasources/remote/auth_remote_data_source.dart';
 import 'package:kabar/domain/entities/user_info.dart';
@@ -5,7 +6,6 @@ import 'package:kabar/domain/repositories/auth_repository.dart';
 import 'package:kabar/domain/translator/user_info_translator.dart';
 import 'package:kabar/shared/common/failure_converter.dart';
 import 'package:kabar/shared/common/result.dart';
-import 'package:injectable/injectable.dart';
 
 @Injectable(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
