@@ -178,25 +178,29 @@ class SignupPage extends BasePage<SignupController, SignupState> {
           textAlign: TextAlign.center,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            AppButton.primary(
-              minWidth: 145,
-              title: 'Facebook',
-              onPressed:() {},
-              borderRadius: 6,
-              backgroundColor: AppColors.subButtonColor,
-              icon: SvgPicture.asset(Assets.icons.facebook.path),
-              titleStyle: context.themeOwn().textTheme?.linkMedium?.copyWith(color: AppColors.subButtonTitleColor),
+            Expanded(
+              child: AppButton.primary(
+                minWidth: 145,
+                title: 'Facebook',
+                onPressed:() {},
+                borderRadius: 6,
+                backgroundColor: AppColors.subButtonColor,
+                icon: SvgPicture.asset(Assets.icons.facebook.path),
+                titleStyle: context.themeOwn().textTheme?.linkMedium?.copyWith(color: AppColors.subButtonTitleColor),
+              ),
             ),
-            AppButton.primary(
-              minWidth: 145,
-              title: 'Google',
-              onPressed:() {},
-              borderRadius: 6,
-              backgroundColor: AppColors.subButtonColor,
-              icon: SvgPicture.asset(Assets.icons.google.path),
-              titleStyle: context.themeOwn().textTheme?.linkMedium?.copyWith(color: AppColors.subButtonTitleColor),
+            const Gap(31),
+            Expanded(
+              child: AppButton.primary(
+                minWidth: 145,
+                title: 'Google',
+                onPressed:() {},
+                borderRadius: 6,
+                backgroundColor: AppColors.subButtonColor,
+                icon: SvgPicture.asset(Assets.icons.google.path),
+                titleStyle: context.themeOwn().textTheme?.linkMedium?.copyWith(color: AppColors.subButtonTitleColor),
+              ),
             ),
           ],
         ),

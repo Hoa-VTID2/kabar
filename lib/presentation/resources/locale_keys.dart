@@ -84,6 +84,7 @@ abstract class  LocaleKeys {
   static const comment_reply = 'comment.reply';
   static const comment_see_more = 'comment.see_more';
   static const comment_hide = 'comment.hide';
+  static const comment_cancel = 'comment.cancel';
   static const comment = 'comment';
 
 }

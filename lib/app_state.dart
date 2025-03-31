@@ -10,5 +10,6 @@ abstract class AppState with _$AppState {
     @Default(null) UserInfo? userInfo,
     @Default(false) bool isLoading,
     @Default(null) Failure? failureGetInitData,
+    @Default(true) bool lightTheme,
   }) = _AppState;
 }

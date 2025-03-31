@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 import 'package:kabar/domain/entities/comment.dart';
 import 'package:kabar/domain/entities/user_info.dart';
 import 'package:kabar/gen/assets.gen.dart';
@@ -14,6 +15,7 @@ import 'package:kabar/presentation/views/widgets/text_field/app_text_field.dart'
 import 'package:kabar/shared/extensions/context_extensions.dart';
 import 'package:kabar/shared/extensions/datetime_extensions.dart';
 import 'package:kabar/shared/extensions/int_extensions.dart';
+import 'package:kabar/shared/extensions/string_extensions.dart';
 import 'package:provider/provider.dart';
 
 @RoutePage()
@@ -53,6 +55,7 @@ class CommentPage extends BasePage<CommentController, CommentState> {
                       )),
                     ],
                   ),
+                  const Gap(17),
                   Expanded(
                     child: ListView.builder(
                       itemCount: state.comments
@@ -92,14 +95,63 @@ class CommentPage extends BasePage<CommentController, CommentState> {
                   ),
                 ]),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Expanded(
-                  child: AppTextField(
-                    value: state.content,
-                    onChanged: (value) {
-                      context.read<CommentController>().updateContent(value);
-                    },
-                    hint: LocaleKeys.comment_place_holder.tr(),
+                  child: Column(
+                    children: [
+                      if (state.replyTo != -1)
+                        Row(
+                          children: [
+                            Text(
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              '${LocaleKeys.comment_reply.tr().uppercaseFirstLetter()} ${state.users.firstWhere(
+                                    (element) =>
+                                        state.comments
+                                            .firstWhere(
+                                              (element) =>
+                                                  element.id ==
+                                                  state.replyTo,
+                                            )
+                                            .userId ==
+                                        element.id,
+                                  ).fullName}',
+                              style: context
+                                  .themeOwn()
+                                  .textTheme
+                                  ?.linkMedium
+                                  ?.copyWith(color: AppColors.primaryColor),
+                            ),
+                            Expanded(
+                              child: TextButton(
+                                  onPressed: () {
+                                    context
+                                        .read<CommentController>()
+                                        .updateReply(-1);
+                                  },
+                                  child: Text(
+                                    LocaleKeys.comment_cancel.tr(),
+                                    style: context
+                                        .themeOwn()
+                                        .textTheme
+                                        ?.linkMedium
+                                        ?.copyWith(color: AppColors.errorColor),
+                                    textAlign: TextAlign.start,
+                                  )),
+                            )
+                          ],
+                        ),
+                      AppTextField(
+                        value: state.content,
+                        onChanged: (value) {
+                          context
+                              .read<CommentController>()
+                              .updateContent(value);
+                        },
+                        hint: LocaleKeys.comment_place_holder.tr(),
+                      ),
+                    ],
                   ),
                 ),
                 //const Expanded(child: Gap(0)),
@@ -291,19 +343,32 @@ class CommentCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Row(
-                        spacing: 4,
-                        children: [
-                          Assets.icons.reply.svg(),
-                          Text(
-                            LocaleKeys.comment_reply.tr(),
-                            style: context
-                                .themeOwn()
-                                .textTheme
-                                ?.textXSmall
-                                ?.copyWith(color: AppColors.subTextColor),
-                          ),
-                        ],
+                      InkWell(
+                        onTap: () {
+                          if(comment.replyCommentId == -1) {
+                            context
+                              .read<CommentController>()
+                              .updateReply(comment.id);
+                          } else {
+                            context
+                                .read<CommentController>()
+                                .updateReply(comment.replyCommentId);
+                          }
+                        },
+                        child: Row(
+                          spacing: 4,
+                          children: [
+                            Assets.icons.reply.svg(),
+                            Text(
+                              LocaleKeys.comment_reply.tr(),
+                              style: context
+                                  .themeOwn()
+                                  .textTheme
+                                  ?.textXSmall
+                                  ?.copyWith(color: AppColors.subTextColor),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

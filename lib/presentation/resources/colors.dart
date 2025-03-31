@@ -25,6 +25,7 @@ abstract class AppColors {
   static const warningColor = Color(0xFFF4B740);
   static const subButtonColor = Color(0xFFEEF1F4);
   static const subButtonTitleColor = Color(0xFF667080);
+  static const darkBackground = Color(0xFF1C1E21);
 
 /////////
 

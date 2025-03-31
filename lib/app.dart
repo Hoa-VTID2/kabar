@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       child: MaterialApp.router(
         routerConfig: getIt<AppRouter>().config(),
         title: 'Flutter Demo',
-        theme: AppTheme.lightTheme,
+        theme: context.watch<AppState>().lightTheme ?AppTheme.lightTheme : AppTheme.darkTheme,
         darkTheme: AppTheme.darkTheme,
         debugShowCheckedModeBanner: false,
         locale: context.locale,

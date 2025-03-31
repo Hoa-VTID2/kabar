@@ -8,6 +8,7 @@ import 'package:kabar/gen/assets.gen.dart';
 import 'package:kabar/presentation/base/base_page.dart';
 import 'package:kabar/presentation/resources/colors.dart';
 import 'package:kabar/presentation/resources/locale_keys.dart';
+import 'package:kabar/presentation/resources/themes.dart';
 import 'package:kabar/presentation/router/router.dart';
 import 'package:kabar/presentation/views/pages/settings/settings_controller.dart';
 import 'package:kabar/presentation/views/pages/settings/settings_state.dart';
@@ -106,49 +107,49 @@ class SettingsPage extends BasePage<SettingsController, SettingsState> {
                   ],
                 ),
               ),
-              InkWell(
-                onTap: () {},
-                child: Stack(
-                  children: [
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(3, 1, 3, 1),
-                          child: SvgPicture.asset(Assets.icons.moon.path),
-                        ),
-                        const Gap(4),
-                        Text(
-                          LocaleKeys.settings_dark_mode.tr(),
-                          style: context.themeOwn().textTheme?.textMedium,
-                        ),
-                        const Expanded(child: Gap(0)),
-                      ],
-                    ),
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      top: 0,
-                      child: Selector<SettingsState, bool>(
-                        selector: (p0, state) => state.darkMode,
-                        builder: (context, darkMode, child) {
-                          return Transform.scale(
-                            scale: 0.6,
-                            child: Switch(
-                              value: darkMode,
-                              inactiveThumbColor: AppColors.white,
-                              trackOutlineColor: const WidgetStatePropertyAll(
-                                  Colors.transparent),
-                              padding: EdgeInsets.zero,
-                              onChanged: (value) => context
-                                  .read<SettingsController>()
-                                  .changeMode(value),
-                            ),
-                          );
-                        },
+              Stack(
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(3, 1, 3, 1),
+                        child: SvgPicture.asset(Assets.icons.moon.path),
                       ),
+                      const Gap(4),
+                      Text(
+                        LocaleKeys.settings_dark_mode.tr(),
+                        style: context.themeOwn().textTheme?.textMedium,
+                      ),
+                      const Expanded(child: Gap(0)),
+                    ],
+                  ),
+                  Positioned(
+                    right: 0,
+                    bottom: 0,
+                    top: 0,
+                    child: Selector<SettingsState, bool>(
+                      selector: (p0, state) => state.darkMode,
+                      builder: (context, darkMode, child) {
+                        return Transform.scale(
+                          scale: 0.6,
+                          child: Switch(
+                            value: darkMode,
+                            inactiveThumbColor: AppColors.white,
+                            trackOutlineColor: const WidgetStatePropertyAll(
+                                Colors.transparent),
+                            padding: EdgeInsets.zero,
+                            onChanged: (value) {
+                              context
+                                  .read<SettingsController>()
+                                  .changeMode(value);
+                              context.read<AppController>().updateTheme(!value);
+                            } ,
+                          ),
+                        );
+                      },
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               InkWell(
                 onTap: () {

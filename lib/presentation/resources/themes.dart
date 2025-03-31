@@ -88,7 +88,20 @@ abstract class AppTheme {
 
   static ThemeData get darkTheme {
     return lightTheme.copyWith(
-      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+      brightness: Brightness.dark,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: AppColors.primaryColor,
+        brightness: Brightness.dark,
+      ),
+      scaffoldBackgroundColor: AppColors.black,
+      appBarTheme: AppBarTheme(
+        color: AppColors.darkBackground,
+        titleTextStyle: AppStyles.linkMedium.copyWith(color: Colors.white),
+      ),
+      textTheme: lightTheme.textTheme.apply(
+        bodyColor: Colors.white,
+        displayColor: Colors.white,
+      ),
     )..addOwn(Brightness.dark, lightTheme.own());
   }
 }

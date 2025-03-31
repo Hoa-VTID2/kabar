@@ -81,4 +81,8 @@ class AppController extends StateNotifier<AppState> {
   void logout() {
     state = state.copyWith(userInfo: null);
   }
+
+  void updateTheme(bool lighTheme) {
+    state = state.copyWith(lightTheme: lighTheme);
+  }
 }
