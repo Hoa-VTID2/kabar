@@ -22,6 +22,7 @@ abstract class AppColors {
   static const buttonColor = Color(0xFFEEF1F4);
   static const disableInputColor = Color(0xFFEEF1F4);
   static const errorColor = Color(0xFFED2E7E);
+  static const errorColorLight = Color(0xFFFFF3F8);
   static const warningColor = Color(0xFFF4B740);
   static const subButtonColor = Color(0xFFEEF1F4);
   static const subButtonTitleColor = Color(0xFF667080);

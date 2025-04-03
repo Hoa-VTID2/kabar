@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,34 +8,33 @@ import 'package:kabar/shared/extensions/string_extensions.dart';
 import 'package:kabar/shared/utils/keyboard.dart';
 
 class AppTextField extends StatefulWidget {
-  const AppTextField({
-    super.key,
-    this.label,
-    this.required = false,
-    this.hint,
-    this.value,
-    this.error,
-    this.enabled = true,
-    this.suffixIcon,
-    this.prefixIcon,
-    this.textInputAction = TextInputAction.done,
-    this.focusNode,
-    this.onFieldSubmitted,
-    this.onTap,
-    this.keyboardType,
-    this.maxLength,
-    this.minLines,
-    this.maxLines,
-    this.inputFormatters,
-    this.onChanged,
-    this.controller,
-    this.disableTextColor,
-    this.disableBackgroundColor,
-    this.readOnly = false,
-    this.isLoading = false,
-    this.textDirection,
-    this.validator
-  });
+  const AppTextField(
+      {super.key,
+      this.label,
+      this.required = false,
+      this.hint,
+      this.value,
+      this.error,
+      this.enabled = true,
+      this.suffixIcon,
+      this.prefixIcon,
+      this.textInputAction = TextInputAction.done,
+      this.focusNode,
+      this.onFieldSubmitted,
+      this.onTap,
+      this.keyboardType,
+      this.maxLength,
+      this.minLines,
+      this.maxLines,
+      this.inputFormatters,
+      this.onChanged,
+      this.controller,
+      this.disableTextColor,
+      this.disableBackgroundColor,
+      this.readOnly = false,
+      this.isLoading = false,
+      this.textDirection,
+      this.validator});
 
   final String? label;
   final bool required;
@@ -93,7 +91,7 @@ class _AppTextFieldState extends State<AppTextField> {
     final colorSchema = context.colorOwn();
     final defaultBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(6.0),
-      borderSide:const BorderSide(
+      borderSide: const BorderSide(
         color: AppColors.subTextColor, // Border color
       ),
     );
@@ -113,7 +111,11 @@ class _AppTextFieldState extends State<AppTextField> {
             child: RichText(
               text: TextSpan(
                 text: widget.label,
-                style: context.themeOwn().textTheme?.textSmall?.copyWith(color: AppColors.subTextColor),
+                style: context
+                    .themeOwn()
+                    .textTheme
+                    ?.textSmall
+                    ?.copyWith(color: AppColors.subTextColor),
                 children: [
                   if (widget.required)
                     TextSpan(
@@ -157,16 +159,28 @@ class _AppTextFieldState extends State<AppTextField> {
                 decoration: InputDecoration(
                   counterText: '',
                   suffixIconConstraints:
-                      BoxConstraints.tight(const Size(40, 44)),
-                  suffixIcon: (widget.suffixIcon != null)
-                      ? Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 12, 12, 12),
-                          child: widget.suffixIcon,
+                      BoxConstraints.tight(const Size(48, 48)),
+                  suffixIcon: (widget.suffixIcon == null &&
+                          (_controller.text != '' && widget.error != null))
+                      ? InkWell(
+                          onTap: () {
+                            _controller.text = '';
+                          },
+                          child: Center(
+                            child: Assets.icons.esc.svg(
+                                height: 13,
+                                width: 13,
+                                colorFilter: const ColorFilter.mode(
+                                    AppColors.errorColor, BlendMode.srcIn)),
+                          ),
                         )
-                      : null,
+                      : Padding(
+                          padding: const EdgeInsets.all(17.5),
+                          child: widget.suffixIcon,
+                        ),
                   prefixIconConstraints:
                       BoxConstraints.tight(const Size(40, 44)),
-                  prefixIcon: (widget.prefixIcon != null)
+                  prefixIcon: widget.prefixIcon != null
                       ? Padding(
                           padding: const EdgeInsets.fromLTRB(12, 12, 8, 12),
                           child: widget.prefixIcon,
@@ -177,9 +191,9 @@ class _AppTextFieldState extends State<AppTextField> {
                     vertical: 12,
                   ),
                   filled: true,
-                  fillColor: widget.enabled
+                  fillColor: (widget.enabled && widget.error == null)
                       ? AppColors.white
-                      : (widget.disableBackgroundColor ?? AppColors.white),
+                      : AppColors.errorColorLight,
                   hintText: widget.hint,
                   hintStyle: textTheme?.textSmall?.copyWith(
                     color: colorSchema?.replaceTextColor,
@@ -200,14 +214,14 @@ class _AppTextFieldState extends State<AppTextField> {
                   error: widget.error != null ? const SizedBox() : null,
                 ),
                 validator: widget.validator ??
-                        (value) {
+                    (value) {
                       if (widget.required && (value == null || value.isEmpty)) {
                         return 'Invalid ${widget.label}';
                       }
                       return null;
                     },
               ),
-              if (widget.isLoading) const CupertinoActivityIndicator()
+              if (widget.isLoading) const CircularProgressIndicator()
             ],
           ),
         ),

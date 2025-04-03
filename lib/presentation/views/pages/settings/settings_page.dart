@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:kabar/app_controller.dart';
+import 'package:kabar/app_state.dart';
 import 'package:kabar/gen/assets.gen.dart';
 import 'package:kabar/presentation/base/base_page.dart';
 import 'package:kabar/presentation/resources/colors.dart';

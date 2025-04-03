@@ -109,158 +109,157 @@ class _ContentState extends State<Content> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        const Positioned(top: 0, left: 0, right: 0, child: Header()),
-        Positioned(
-          top: 56,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          child: SingleChildScrollView(
-            child: Column(
-              spacing: 16,
-              children: [
-                AppTextField(
-                  onTap: () {
-                    context.router.replaceAll([const SearchRoute()]);
-                  },
-                  hint: LocaleKeys.home_search.tr(),
-                  prefixIcon: SvgPicture.asset(Assets.icons.search.path),
-                  suffixIcon: InkWell(
-                    child: SvgPicture.asset(Assets.icons.customize.path),
+    return RefreshIndicator(
+      onRefresh: ()async {
+        await Future.delayed(const Duration(milliseconds: 500));
+        context.read<HomeTopController>().getTopicNews();
+      },
+      child: Stack(
+        children: [
+          const Positioned(top: 0, left: 0, right: 0, child: Header()),
+          Positioned(
+            top: 72,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: SingleChildScrollView(
+              child: Column(
+                spacing: 16,
+                children: [
+                  AppTextField(
                     onTap: () {
                       context.router.replaceAll([const SearchRoute()]);
                     },
+                    hint: LocaleKeys.home_search.tr(),
+                    prefixIcon: SvgPicture.asset(Assets.icons.search.path),
+                    suffixIcon: InkWell(
+                      child: SvgPicture.asset(Assets.icons.customize.path),
+                      onTap: () {
+                        context.router.replaceAll([const SearchRoute()]);
+                      },
+                    ),
                   ),
-                ),
-                Column(
-                  spacing: 16,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(LocaleKeys.home_trending.tr(),
-                            style: context.themeOwn().textTheme?.linkMedium),
-                        Text(LocaleKeys.home_see_all.tr(),
-                            style: context
-                                .themeOwn()
-                                .textTheme
-                                ?.textSmall
-                                ?.copyWith(color: AppColors.subTextColor))
-                      ],
-                    ),
-                    BigNewsCard(
-                      news: context.read<HomeTopController>().getTrendNews(),
-                      pageRouteInfo: const HomeRoute(),
-                    ),
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(LocaleKeys.home_latest.tr(),
-                                style:
-                                    context.themeOwn().textTheme?.linkMedium),
-                            Text(LocaleKeys.home_see_all.tr(),
-                                style: context
-                                    .themeOwn()
-                                    .textTheme
-                                    ?.textSmall
-                                    ?.copyWith(color: AppColors.subTextColor))
-                          ],
-                        ),
-                        DefaultTabController(
-                          length: categories.length,
-                          child: Column(
+                  Column(
+                    spacing: 16,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(LocaleKeys.home_trending.tr(),
+                              style: context.themeOwn().textTheme?.linkMedium),
+                          Text(LocaleKeys.home_see_all.tr(),
+                              style: context
+                                  .themeOwn()
+                                  .textTheme
+                                  ?.textSmall
+                                  ?.copyWith(color: AppColors.subTextColor))
+                        ],
+                      ),
+                      BigNewsCard(
+                        news: context.read<HomeTopController>().getTrendNews(),
+                        pageRouteInfo: const HomeRoute(),
+                      ),
+                      Column(
+                        spacing: 16,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              TabBar(
-                                controller: _tabController,
-                                tabAlignment: TabAlignment.start,
-                                isScrollable: true,
-                                padding: EdgeInsets.zero,
-                                labelPadding:
-                                    const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                dividerColor: Colors.transparent,
-                                tabs: categories
-                                    .map((c) => Tab(
-                                          height: 34,
-                                          child: Text(
-                                            tr(LocaleKeys.topic,
-                                                gender: c.name),
-                                            style: context
-                                                .themeOwn()
-                                                .textTheme
-                                                ?.textMedium,
-                                          ),
-                                        ))
-                                    .toList(),
-                                labelStyle: context
-                                    .themeOwn()
-                                    .textTheme
-                                    ?.textMedium
-                                    ?.copyWith(color: AppColors.black),
-                                labelColor: AppColors.black,
-                                unselectedLabelStyle: context
-                                    .themeOwn()
-                                    .textTheme
-                                    ?.textMedium
-                                    ?.copyWith(color: AppColors.subTextColor),
-                                indicator: const BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                        color: AppColors.primaryColor,
-                                        width: 2),
-                                  ),
-                                ),
-                              ),
-                              const Gap(16),
-                              SizedBox(
-                                height: 624,
-                                child: TabBarView(
-                                    controller: _tabController,
-                                    children: categories
-                                        .map<Widget>(
-                                          (c) => Selector<HomeTopState,
-                                              List<News>>(
-                                            selector: (_, state) => state.news,
-                                            builder: (_, newsList, __) {
-                                              final news = newsList;
-                                              final displayedNews =
-                                                  news.length > 5
-                                                      ? news.sublist(0, 5)
-                                                      : news;
-                                              return Column(
-                                                spacing: 16,
-                                                children: List.generate(
-                                                  displayedNews.length,
-                                                  (index) {
-                                                    return NewsCard(
-                                                      news:
-                                                          displayedNews[index],
-                                                      pageRouteInfo:
-                                                          const HomeRoute(),
-                                                    );
-                                                  },
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        )
-                                        .toList()),
-                              ),
+                              Text(LocaleKeys.home_latest.tr(),
+                                  style:
+                                      context.themeOwn().textTheme?.linkMedium),
+                              Text(LocaleKeys.home_see_all.tr(),
+                                  style: context
+                                      .themeOwn()
+                                      .textTheme
+                                      ?.textSmall
+                                      ?.copyWith(color: AppColors.subTextColor))
                             ],
                           ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ],
+                          DefaultTabController(
+                            length: categories.length,
+                            child: Column(
+                              children: [
+                                TabBar(
+                                  controller: _tabController,
+                                  tabAlignment: TabAlignment.start,
+                                  isScrollable: true,
+                                  padding: EdgeInsets.zero,
+                                  labelPadding:
+                                      const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                  dividerColor: Colors.transparent,
+                                  tabs: categories
+                                      .map((c) => Tab(
+                                            height: 34,
+                                            child: Text(
+                                              tr(LocaleKeys.topic,
+                                                  gender: c.name),
+                                            ),
+                                          ))
+                                      .toList(),
+                                  labelStyle: context
+                                      .themeOwn()
+                                      .textTheme
+                                      ?.textMedium
+                                      ?.copyWith(color: AppColors.black),
+                                  labelColor: AppColors.black,
+                                  unselectedLabelStyle: context
+                                      .themeOwn()
+                                      .textTheme
+                                      ?.textMedium
+                                      ?.copyWith(color: AppColors.subTextColor),
+                                  unselectedLabelColor: AppColors.subTextColor,
+                                  indicator: const BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                          color: AppColors.primaryColor,
+                                          width: 2),
+                                    ),
+                                  ),
+                                ),
+                                const Gap(16),
+                                Selector<HomeTopState, List<News>>(
+                                    selector: (_, state) => state.news,
+                                    builder: (_, newsList, __) {
+                                      final news = newsList;
+                                      final displayedNews = news.length > 5
+                                          ? news.sublist(0, 5)
+                                          : news;
+                                      return SizedBox(
+                                        height: (displayedNews.length+1)*(96+16)-48,
+                                        child: TabBarView(
+                                            controller: _tabController,
+                                            children: categories
+                                                .map<Widget>((c) => Column(
+                                                      spacing: 16,
+                                                      children: List.generate(
+                                                        displayedNews.length,
+                                                        (index) {
+                                                          return NewsCard(
+                                                            news: displayedNews[
+                                                                index],
+                                                            pageRouteInfo:
+                                                                const HomeRoute(),
+                                                          );
+                                                        },
+                                                      ),
+                                                    ))
+                                                .toList()),
+                                      );
+                                    }),
+                              ],
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -275,41 +274,47 @@ class Notification extends StatefulWidget {
 class _NotificationState extends State<Notification> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        const Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: NotificationHeader(),
-        ),
-        Positioned(
-          top: 40,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          child: SingleChildScrollView(
-            child: Consumer<HomeTopState>(builder: (_, state, __) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 16,
-                children: [
-                  for (final day in state.sendTimes) ...[
-                    Text(
-                      day.formatLocalized(context: context),
-                      style: context.themeOwn().textTheme?.linkMedium,
-                    ),
-                    ...state.notifications
-                        .where((n) => n.sendAt.dateOnly == day.dateOnly)
-                        .map((n) => normalNotification(n, context)),
-                  ],
-                  const Gap(16),
-                ],
-              );
-            }),
+    return RefreshIndicator(
+      onRefresh: ()async {
+        await Future.delayed(const Duration(milliseconds: 500));
+        context.read<HomeTopController>().getAllNotifications();
+      },
+      child: Stack(
+        children: [
+          const Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: NotificationHeader(),
           ),
-        ),
-      ],
+          Positioned(
+            top: 40,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: SingleChildScrollView(
+              child: Consumer<HomeTopState>(builder: (_, state, __) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 16,
+                  children: [
+                    for (final day in state.sendTimes) ...[
+                      Text(
+                        day.formatLocalized(context: context),
+                        style: context.themeOwn().textTheme?.linkMedium,
+                      ),
+                      ...state.notifications
+                          .where((n) => n.sendAt.dateOnly == day.dateOnly)
+                          .map((n) => normalNotification(n, context)),
+                    ],
+                    const Gap(16),
+                  ],
+                );
+              }),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -430,39 +435,29 @@ class Header extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SvgPicture.asset(Assets.images.logo99x30.path),
-          Stack(
-            children: [
-              Positioned(
-                top: 8,
-                left: 8,
-                child: Container(
-                  width: 32,
-                  height: 32,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black12,
-                        spreadRadius: 0.5,
-                        blurRadius: 10,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
+          InkWell(
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(6, 4, 6, 4),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.white),
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 10,
                   ),
-                ),
+                ],
               ),
-              IconButton(
-                icon: SvgPicture.asset(Assets.icons.notification.path),
-                iconSize: 20,
-                onPressed: () {
-                  context
-                      .read<HomeTopController>()
-                      .updateNotificationPage(true);
-                },
+              child: Assets.icons.notification.svg(
+                height: 22,
+                width: 18,
               ),
-            ],
+            ),
+            // iconSize: 20,
+            onTap: () {
+              context.read<HomeTopController>().updateNotificationPage(true);
+            },
           ),
         ],
       ),

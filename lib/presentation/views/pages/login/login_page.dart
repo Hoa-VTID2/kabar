@@ -67,11 +67,11 @@ class LoginPage extends BasePage<LoginController, LoginState> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Hello',
+                LocaleKeys.login_hello.tr(),
                 style: context.themeOwn().textTheme?.displayLargeBold,
               ),
               Text(
-                'Again!',
+                LocaleKeys.login_again.tr(),
                 style: context
                     .themeOwn()
                     .textTheme
@@ -79,10 +79,7 @@ class LoginPage extends BasePage<LoginController, LoginState> {
                     ?.copyWith(color: AppColors.primaryColor),
               ),
               const Gap(4),
-              Text(
-                '''
-Welcome back you've
-been missed''',
+              Text(LocaleKeys.login_welcome.tr(),
                 style: context
                     .themeOwn()
                     .textTheme
@@ -128,55 +125,72 @@ been missed''',
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Selector<LoginState, bool>(
-                      selector: (_, loginState) => loginState.remember,
-                      builder: (context, remember, child) {
-                        return SizedBox(
-                          height: 24,
-                          width: 24,
-                          child: Checkbox(
-                            value: remember,
-                            onChanged: (value) {
-                              context
-                                  .read<LoginController>()
-                                  .updateRemember(value ?? true);
-                            },
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(3), // Bo góc 3px
+                Expanded(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Selector<LoginState, bool>(
+                        selector: (_, loginState) => loginState.remember,
+                        builder: (context, remember, child) {
+                          return SizedBox(
+                            height: 24,
+                            width: 24,
+                            child: Checkbox(
+                              value: remember,
+                              onChanged: (value) {
+                                context
+                                    .read<LoginController>()
+                                    .updateRemember(value ?? true);
+                              },
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(3), // Bo góc 3px
+                              ),
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
                             ),
-                            materialTapTargetSize:
-                                MaterialTapTargetSize.shrinkWrap,
-                          ),
-                        );
-                      },
-                    ),
-                    Text(
-                      'Remember me',
-                      style: context
-                          .themeOwn()
-                          .textTheme
-                          ?.textSmall
-                          ?.copyWith(color: AppColors.subTextColor),
-                    ),
-                  ],
-                ),
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    minimumSize: Size.zero,
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          );
+                        },
+                      ),
+                      Expanded(
+                        child: Text(
+                          LocaleKeys.login_remember_me.tr(),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: context
+                              .themeOwn()
+                              .textTheme
+                              ?.textSmall
+                              ?.copyWith(color: AppColors.subTextColor),
+                        ),
+                      ),
+                    ],
                   ),
-                  child: Text(
-                    'Forgot the password ?',
-                    style: context
-                        .themeOwn()
-                        .textTheme
-                        ?.textSmall
-                        ?.copyWith(color: AppColors.primaryColor),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          minimumSize: Size.zero,
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        ),
+                        child: Text(
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.end,
+                          LocaleKeys.login_forgot_the_passwords.tr(),
+                          style: context
+                              .themeOwn()
+                              .textTheme
+                              ?.textSmall
+                              ?.copyWith(color: AppColors.primaryColor),
+                        ),
+                      ),
+                    ],
                   ),
                 )
               ],
@@ -201,7 +215,7 @@ been missed''',
           ),
         ),
         Text(
-          'or continue with',
+          LocaleKeys.login_continue.tr(),
           style: context
               .themeOwn()
               .textTheme
@@ -214,7 +228,7 @@ been missed''',
             Expanded(
               child: AppButton.primary(
                   minWidth: 145,
-                  title: 'Facebook',
+                  title: LocaleKeys.login_facebook.tr(),
                   onPressed:() {},
                   borderRadius: 6,
                   backgroundColor: AppColors.subButtonColor,
@@ -226,7 +240,7 @@ been missed''',
             Expanded(
               child: AppButton.primary(
                 minWidth: 145,
-                title: 'Google',
+                title: LocaleKeys.login_google.tr(),
                 onPressed:() {},
                 borderRadius: 6,
                 backgroundColor: AppColors.subButtonColor,
@@ -239,7 +253,7 @@ been missed''',
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("don't have an account ? ", style: context.themeOwn().textTheme?.textSmall?.copyWith(color: AppColors.subButtonTitleColor),),
+            Text(LocaleKeys.login_do_not_have_account.tr(), style: context.themeOwn().textTheme?.textSmall?.copyWith(color: AppColors.subButtonTitleColor),),
             TextButton(
               onPressed: () {
                 context.router.replaceAll([const SignupRoute()]);
@@ -250,7 +264,7 @@ been missed''',
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
               child: Text(
-                'Sign Up',
+                LocaleKeys.login_signup.tr(),
                 style: context
                     .themeOwn()
                     .textTheme

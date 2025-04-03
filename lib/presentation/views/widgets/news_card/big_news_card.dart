@@ -42,6 +42,8 @@ class BigNewsCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   news.topic,
                   style: context
                       .themeOwn()
@@ -49,7 +51,10 @@ class BigNewsCard extends StatelessWidget {
                       ?.textXSmall
                       ?.copyWith(color: AppColors.subTextColor),
                 ),
-                Text(news.fullName,
+                Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    news.fullName,
                     style: context.themeOwn().textTheme?.textMedium),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,6 +68,7 @@ class BigNewsCard extends StatelessWidget {
                           Image.asset(width: 20, height: 20, news.author.image),
                           Flexible(
                             child: Text(
+                              maxLines: 1,
                               news.author.fullName,
                               style: context
                                   .themeOwn()
@@ -77,6 +83,8 @@ class BigNewsCard extends StatelessWidget {
                           ),
                           SvgPicture.asset(Assets.icons.clock.path),
                           Text(
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                             news.time.getTimeAgo,
                             style: context
                                 .themeOwn()

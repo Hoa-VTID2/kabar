@@ -58,7 +58,7 @@ There has been a growing frustration among Ukraine's leadership with Berlin, whi
         id: 2,
         img: Assets.images.business.path,
         topic: 'Business',
-        fullName: '5 things to know before the stock market opens Monday',
+        fullName: '5 things to know before the stock market opens MondayMondayMondayMondayMondayMondayMondayMondayMondayMondayMondayMondayMonday',
         detail: r'''
 Ukrainian President Volodymyr Zelensky has accused European countries that continue to buy Russian oil of "earning their money in other people's blood".
 

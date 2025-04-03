@@ -55,6 +55,7 @@ class DetailPage extends BasePage<DetailController, DetailState> {
                       width: 24,
                       child: SvgPicture.asset(
                           fit: BoxFit.none, Assets.icons.share.path)),
+                  const Gap(8),
                   SizedBox(
                       height: 24,
                       width: 24,
@@ -212,10 +213,10 @@ class DetailPage extends BasePage<DetailController, DetailState> {
                 )),
                 boxShadow: [
                   BoxShadow(
-                    color: Color.fromRGBO(128, 128, 128, 0.2),
-                    blurRadius: 5,
+                    color: Color.fromRGBO(0, 0, 0, 0.05),
+                    blurRadius: 4,
                     spreadRadius: 1,
-                    offset: Offset(0, -1),
+                    offset: Offset(0, -2),
                   ),
                 ]),
             child: Selector<DetailState, News>(

@@ -67,7 +67,7 @@ class SignupPage extends BasePage<SignupController, SignupState> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Hello!',
+                '${LocaleKeys.login_hello.tr()}!',
                 style: context
                     .themeOwn()
                     .textTheme
@@ -75,7 +75,7 @@ class SignupPage extends BasePage<SignupController, SignupState> {
                     ?.copyWith(color: AppColors.primaryColor),
               ),
               const Gap(4),
-              Text('Signup to get Started',
+              Text(LocaleKeys.login_signup_sub_title.tr(),
                 style: context
                     .themeOwn()
                     .textTheme
@@ -144,7 +144,7 @@ class SignupPage extends BasePage<SignupController, SignupState> {
                   },
                 ),
                 Text(
-                  'Remember me',
+                  LocaleKeys.login_remember_me.tr(),
                   style: context
                       .themeOwn()
                       .textTheme
@@ -169,7 +169,7 @@ class SignupPage extends BasePage<SignupController, SignupState> {
           titleStyle: context.themeOwn().textTheme?.linkMedium?.copyWith(color: AppColors.white),
         ),
         Text(
-          'or continue with',
+          LocaleKeys.login_continue.tr(),
           style: context
               .themeOwn()
               .textTheme
@@ -182,7 +182,7 @@ class SignupPage extends BasePage<SignupController, SignupState> {
             Expanded(
               child: AppButton.primary(
                 minWidth: 145,
-                title: 'Facebook',
+                title: LocaleKeys.login_facebook.tr(),
                 onPressed:() {},
                 borderRadius: 6,
                 backgroundColor: AppColors.subButtonColor,
@@ -194,7 +194,7 @@ class SignupPage extends BasePage<SignupController, SignupState> {
             Expanded(
               child: AppButton.primary(
                 minWidth: 145,
-                title: 'Google',
+                title: LocaleKeys.login_google.tr(),
                 onPressed:() {},
                 borderRadius: 6,
                 backgroundColor: AppColors.subButtonColor,
@@ -207,7 +207,7 @@ class SignupPage extends BasePage<SignupController, SignupState> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Already have an account ? ', style: context.themeOwn().textTheme?.textSmall?.copyWith(color: AppColors.subButtonTitleColor),),
+            Text(LocaleKeys.login_already_have_an_account.tr(), style: context.themeOwn().textTheme?.textSmall?.copyWith(color: AppColors.subButtonTitleColor),),
             TextButton(
               onPressed: () {
                 context.router.replaceAll([const LoginRoute()]);
@@ -218,7 +218,7 @@ class SignupPage extends BasePage<SignupController, SignupState> {
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
               child: Text(
-                'Login',
+                LocaleKeys.login_login_title.tr(),
                 style: context
                     .themeOwn()
                     .textTheme

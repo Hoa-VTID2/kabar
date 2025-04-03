@@ -39,10 +39,12 @@ class NewsCard extends StatelessWidget {
             ),
             Expanded(
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+                spacing: 4,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(news.topic,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: context
                           .themeOwn()
                           .textTheme
@@ -50,7 +52,9 @@ class NewsCard extends StatelessWidget {
                           ?.copyWith(color: AppColors.subTextColor)),
                   Text(news.fullName,
                       style: context.themeOwn().textTheme?.textMedium,
-                      maxLines: 2),
+                      maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     spacing: 8,

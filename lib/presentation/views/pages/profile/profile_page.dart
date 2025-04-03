@@ -169,31 +169,36 @@ class ProfilePage extends BasePage<ProfileController, ProfileState> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      spacing: 16,
                       children: [
-                        AppButton.primary(
-                            title: LocaleKeys.profile_edit_profile.tr(),
-                            titleStyle: context
-                                .themeOwn()
-                                .textTheme
-                                ?.linkMedium
-                                ?.copyWith(color: AppColors.white),
-                            backgroundColor: AppColors.primaryColor,
-                            borderRadius: 6,
-                            minWidth: 164,
-                            onPressed: () {
-                              context.pushRoute(const ProfileEditRoute());
-                            }),
-                        AppButton.primary(
-                            title: LocaleKeys.profile_website.tr(),
-                            titleStyle: context
-                                .themeOwn()
-                                .textTheme
-                                ?.linkMedium
-                                ?.copyWith(color: AppColors.white),
-                            backgroundColor: AppColors.primaryColor,
-                            borderRadius: 6,
-                            minWidth: 164,
-                            onPressed: () {}),
+                        Expanded(
+                          child: AppButton.primary(
+                              title: LocaleKeys.profile_edit_profile.tr(),
+                              titleStyle: context
+                                  .themeOwn()
+                                  .textTheme
+                                  ?.linkMedium
+                                  ?.copyWith(color: AppColors.white),
+                              backgroundColor: AppColors.primaryColor,
+                              borderRadius: 6,
+                              minWidth: 164,
+                              onPressed: () {
+                                context.pushRoute(const ProfileEditRoute());
+                              }),
+                        ),
+                        Expanded(
+                          child: AppButton.primary(
+                              title: LocaleKeys.profile_website.tr(),
+                              titleStyle: context
+                                  .themeOwn()
+                                  .textTheme
+                                  ?.linkMedium
+                                  ?.copyWith(color: AppColors.white),
+                              backgroundColor: AppColors.primaryColor,
+                              borderRadius: 6,
+                              minWidth: 164,
+                              onPressed: () {}),
+                        ),
                       ],
                     ),
                   ],

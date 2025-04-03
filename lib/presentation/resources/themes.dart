@@ -102,6 +102,37 @@ abstract class AppTheme {
         bodyColor: Colors.white,
         displayColor: Colors.white,
       ),
-    )..addOwn(Brightness.dark, lightTheme.own());
+    )..addOwn(Brightness.dark,
+      AppThemeData(
+        textTheme: AppTextTheme(
+          displayLarge: AppStyles.displayLarge.copyWith(color: AppColors.white),
+          displayMedium: AppStyles.displayMedium.copyWith(color: AppColors.white),
+          displaySmall: AppStyles.displaySmall.copyWith(color: AppColors.white),
+          displayLargeBold: AppStyles.displayLargeBold.copyWith(color: AppColors.white),
+          displayMediumBold: AppStyles.displayMediumBold.copyWith(color: AppColors.white),
+          displaySmallBold: AppStyles.displaySmallBold.copyWith(color: AppColors.white),
+          textLarge: AppStyles.textLarge.copyWith(color: AppColors.white),
+          textMedium: AppStyles.textMedium.copyWith(color: AppColors.white),
+          textSmall: AppStyles.textSmall.copyWith(color: AppColors.white),
+          textXSmall: AppStyles.textXSmall.copyWith(color: AppColors.white),
+          linkLarge: AppStyles.linkLarge.copyWith(color: AppColors.white),
+          linkMedium: AppStyles.linkMedium.copyWith(color: AppColors.white),
+          linkSmall: AppStyles.linkSmall.copyWith(color: AppColors.white),
+          linkXSmall: AppStyles.linkXSmall.copyWith(color: AppColors.white),
+        ),
+        colorSchema: AppColorSchema(
+          primary: AppColors.primaryColor,
+          mainText: AppColors.mainTextColor,
+          successColor: AppColors.successColor,
+          mainStrokeColor: AppColors.mainStrokeColor,
+          secondaryStrokeColor: AppColors.secondaryStrokeColor,
+          mainBackgroundColor: AppColors.mainBackgroundColor,
+          replaceTextColor: AppColors.replaceTextColor,
+          warning: AppColors.warningColor,
+          subTextColor: AppColors.subTextColor,
+          secondaryBackgroundColors: AppColors.secondaryBackgroundColors,
+        ),
+      ),
+    );
   }
 }

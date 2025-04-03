@@ -20,9 +20,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
+    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final isLogined = context.read<AppState>().userInfo != null;
+      final isLogined = context.watch<AppState>().userInfo != null;
       if (isLogined) {
           getIt<AppRouter>().replaceAll([const HomeRoute()]);
       }

@@ -4,7 +4,7 @@
   },
 
   "error": {
-    "token_is_expired": "Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại",
+    "token_is_expired": "Phiên đã hết hạn, vui lòng đăng nhập lại",
     "something_went_wrong": "Đã xảy ra lỗi, vui lòng thử lại",
     "connection_timeout": "Đã xảy ra lỗi, vui lòng thử lại",
     "no_internet": "Đã xảy ra lỗi, vui lòng thử lại"
@@ -33,7 +33,7 @@
 
   "list_view": {
     "no_data": "Không có dữ liệu",
-    "refresh_complete": "Làm mới dữ liệu thành công",
+    "refresh_complete": "Dữ liệu đã được làm mới",
     "refresh_fail": "Làm mới dữ liệu thất bại"
   },
 
@@ -49,7 +49,19 @@
     "password_hint": "Vui lòng nhập mật khẩu",
     "login_button": "Đăng nhập",
     "username_null_error": "Tên đăng nhập không hợp lệ",
-    "password_null_error": "Mật khẩu không hợp lệ"
+    "password_null_error": "Mật khẩu không hợp lệ",
+    "remember_me": "Ghi nhớ đăng nhập",
+    "forgot_the_passwords": "Quên mật khẩu?",
+    "hello": "Xin chào",
+    "again": "Lần nữa!",
+    "welcome": "Chào mừng trở lại,\nchúng tôi nhớ bạn!",
+    "signup_sub_title": "Đăng ký để bắt đầu",
+    "continue": "hoặc tiếp tục với",
+    "facebook": "Facebook",
+    "google": "Google",
+    "do_not_have_account": "Chưa có tài khoản? ",
+    "already_have_an_account": "Đã có tài khoản? ",
+    "signup": "Đăng ký"
   },
 
   "home": {
@@ -94,7 +106,7 @@
     "full_name": "Họ và tên",
     "email": "Địa chỉ email",
     "phone_number": "Số điện thoại",
-    "bio": "Giới thiệu",
+    "bio": "Tiểu sử",
     "website": "Trang web"
   },
 

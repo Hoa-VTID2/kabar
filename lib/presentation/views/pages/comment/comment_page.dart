@@ -29,8 +29,11 @@ class CommentPage extends BasePage<CommentController, CommentState> {
     super.onInitState(context);
   }
 
+
+
   @override
   Widget builder(BuildContext context) {
+    final ScrollController _scrollController = ScrollController();
     return Consumer<CommentState>(builder: (context, state, child) {
       return Column(
         children: [
@@ -111,8 +114,7 @@ class CommentPage extends BasePage<CommentController, CommentState> {
                                         state.comments
                                             .firstWhere(
                                               (element) =>
-                                                  element.id ==
-                                                  state.replyTo,
+                                                  element.id == state.replyTo,
                                             )
                                             .userId ==
                                         element.id,
@@ -345,10 +347,10 @@ class CommentCard extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          if(comment.replyCommentId == -1) {
+                          if (comment.replyCommentId == -1) {
                             context
-                              .read<CommentController>()
-                              .updateReply(comment.id);
+                                .read<CommentController>()
+                                .updateReply(comment.id);
                           } else {
                             context
                                 .read<CommentController>()

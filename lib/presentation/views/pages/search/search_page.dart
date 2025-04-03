@@ -27,7 +27,7 @@ class SearchPage extends BasePage<my_search.SearchController, SearchState> {
     final List<Tab> tabs = _getTabs();
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
+        padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
         child: Column(
           spacing: 16,
           children: [
@@ -38,7 +38,7 @@ class SearchPage extends BasePage<my_search.SearchController, SearchState> {
                 context.read<my_search.SearchController>().find(value);
               },
               suffixIcon: InkWell(
-                child: SvgPicture.asset(Assets.icons.esc.path),
+                child: SvgPicture.asset(Assets.icons.esc.path, height: 13, width: 13,),
                 onTap: () {
                   context.router.replaceAll([const HomeRoute()]);
                 },
@@ -75,10 +75,11 @@ class SearchPage extends BasePage<my_search.SearchController, SearchState> {
                   ),
                   const Gap(16),
                   SizedBox(
-                    height: 700,
+                    height: 724,
                     child: Consumer<SearchState>(
                       builder: (_, state, __) {
                         return TabBarView(children: [
+                          //News list
                           ListView(
                             children: List.generate(
                               state.news.length,
@@ -95,6 +96,7 @@ class SearchPage extends BasePage<my_search.SearchController, SearchState> {
                               },
                             ),
                           ),
+                          //Topics list
                           ListView(
                             children: List.generate(
                               state.topics.length,
@@ -147,6 +149,7 @@ class SearchPage extends BasePage<my_search.SearchController, SearchState> {
                                           ),
                                           if (state.topics[index].isSaved)
                                             AppButton(
+                                              minWidth: 78,
                                               padding: const EdgeInsets.fromLTRB(
                                                   13, 5, 13, 5),
                                               backgroundColor:
@@ -171,6 +174,7 @@ class SearchPage extends BasePage<my_search.SearchController, SearchState> {
                                             )
                                           else
                                             AppButton(
+                                              minWidth: 78,
                                               borderColor: AppColors.primaryColor,
                                               padding: const EdgeInsets.fromLTRB(
                                                   13, 5, 13, 5),
@@ -203,6 +207,7 @@ class SearchPage extends BasePage<my_search.SearchController, SearchState> {
                               },
                             ),
                           ),
+                          //Authors list
                           ListView(
                             children: List.generate(
                               state.authors.length,
@@ -254,6 +259,7 @@ class SearchPage extends BasePage<my_search.SearchController, SearchState> {
                                           ),
                                           if (state.authors[index].followed)
                                             AppButton(
+                                              minWidth: 85.8,
                                               padding: const EdgeInsets.fromLTRB(
                                                   13, 5, 13, 5),
                                               backgroundColor:
@@ -278,7 +284,7 @@ class SearchPage extends BasePage<my_search.SearchController, SearchState> {
                                           else
                                             OutlinedButton(
                                                 style: OutlinedButton.styleFrom(
-                                                  minimumSize: Size.zero,
+                                                  minimumSize: const Size(104.2, 0),
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
                                                       BorderRadius.circular(

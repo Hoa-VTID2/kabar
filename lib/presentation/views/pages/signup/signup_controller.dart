@@ -18,7 +18,7 @@ class SignupController extends BaseController<SignupState> {
     String? usernameError;
     String? passwordError;
 
-    if (state.username.trim().isEmpty) {
+    if (state.username.trim().isEmpty || state.username.length <3) {
       usernameError = LocaleKeys.login_username_null_error.tr();
       isValid = false;
     }

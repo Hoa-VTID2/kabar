@@ -17,6 +17,10 @@ class SettingsController extends BaseController<SettingsState> {
     return super.initData();
   }
 
+  void getTheme(bool theme) {
+    state = state.copyWith(darkMode: !theme);
+  }
+
   void changeMode(bool darkMode) {
     state = state.copyWith(darkMode: darkMode);
   }

@@ -49,7 +49,19 @@
     "password_hint": "Please enter your password",
     "login_button": "Login",
     "username_null_error": "Invalid Username",
-    "password_null_error": "Invalid Password"
+    "password_null_error": "Invalid Password",
+    "remember_me": "Remember me",
+    "forgot_the_passwords": "Forgot the password ?",
+    "hello": "Hello",
+    "again": "Again!",
+    "welcome": "Welcome back you've\nbeen missed",
+    "signup_sub_title": "Signup to get Started",
+    "continue": "or continue with",
+    "facebook": "Facebook",
+    "google": "Google",
+    "do_not_have_account": "don't have an account ? ",
+    "already_have_an_account": "Already have an account ? ",
+    "signup": "Sign Up"
   },
 
   "home": {

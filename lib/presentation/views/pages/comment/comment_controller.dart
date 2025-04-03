@@ -102,6 +102,7 @@ class CommentController extends BaseController<CommentState> {
     for(int i=0; i<oldShow.length;i++){
       show[i] = show[i] | oldShow[i];
     }
+    if(state.replyTo != -1) show[state.replyTo]=true;
     commentRepository.postComment(cmt);
     state = state.copyWith(comments: comments,commentId: state.commentId + 1, content: '', replyTo: -1,showSubs: show);
   }

@@ -162,9 +162,9 @@ class _AppSecureTextFieldState extends State<AppSecureTextField> {
                 vertical: 12,
               ),
               filled: true,
-              fillColor: widget.enabled
+              fillColor: (widget.enabled && widget.error == null)
                   ? AppColors.white
-                  : (widget.disableBackgroundColor ?? AppColors.white),
+                  : AppColors.errorColorLight,
               hintText: widget.hint,
               hintStyle: textTheme?.textSmall?.copyWith(
                 color: colorSchema?.replaceTextColor,
