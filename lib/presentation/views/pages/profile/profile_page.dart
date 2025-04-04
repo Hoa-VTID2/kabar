@@ -90,61 +90,73 @@ class ProfilePage extends BasePage<ProfileController, ProfileState> {
                             child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Column(
-                              spacing: 4,
-                              children: [
-                                Text(
-                                  state.currentUser?.follower.toString() ??
-                                      'Unknown',
-                                  style:
-                                      context.themeOwn().textTheme?.linkMedium,
-                                ),
-                                Text(
-                                  LocaleKeys.profile_follower.tr(),
-                                  style: context
-                                      .themeOwn()
-                                      .textTheme
-                                      ?.textMedium
-                                      ?.copyWith(color: AppColors.subTextColor),
-                                )
-                              ],
+                            Expanded(
+                              child: Column(
+                                spacing: 4,
+                                children: [
+                                  Text(
+                                    state.currentUser?.follower.toString() ??
+                                        'Unknown',
+                                    style:
+                                        context.themeOwn().textTheme?.linkMedium,
+                                  ),
+                                  Text(
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    LocaleKeys.profile_follower.tr(),
+                                    style: context
+                                        .themeOwn()
+                                        .textTheme
+                                        ?.textMedium
+                                        ?.copyWith(color: AppColors.subTextColor),
+                                  )
+                                ],
+                              ),
                             ),
-                            Column(
-                              spacing: 4,
-                              children: [
-                                Text(
-                                  state.currentUser?.following.toString() ??
-                                      'Unknown',
-                                  style:
-                                      context.themeOwn().textTheme?.linkMedium,
-                                ),
-                                Text(
-                                  LocaleKeys.profile_following.tr(),
-                                  style: context
-                                      .themeOwn()
-                                      .textTheme
-                                      ?.textMedium
-                                      ?.copyWith(color: AppColors.subTextColor),
-                                )
-                              ],
+                            Expanded(
+                              child: Column(
+                                spacing: 4,
+                                children: [
+                                  Text(
+                                    state.currentUser?.following.toString() ??
+                                        'Unknown',
+                                    style:
+                                        context.themeOwn().textTheme?.linkMedium,
+                                  ),
+                                  Text(
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    LocaleKeys.profile_following.tr(),
+                                    style: context
+                                        .themeOwn()
+                                        .textTheme
+                                        ?.textMedium
+                                        ?.copyWith(color: AppColors.subTextColor),
+                                  )
+                                ],
+                              ),
                             ),
-                            Column(
-                              spacing: 4,
-                              children: [
-                                Text(
-                                  state.userNews.length.toString(),
-                                  style:
-                                      context.themeOwn().textTheme?.linkMedium,
-                                ),
-                                Text(
-                                  LocaleKeys.profile_news.tr(),
-                                  style: context
-                                      .themeOwn()
-                                      .textTheme
-                                      ?.textMedium
-                                      ?.copyWith(color: AppColors.subTextColor),
-                                )
-                              ],
+                            Expanded(
+                              child: Column(
+                                spacing: 4,
+                                children: [
+                                  Text(
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    state.userNews.length.toString(),
+                                    style:
+                                        context.themeOwn().textTheme?.linkMedium,
+                                  ),
+                                  Text(
+                                    LocaleKeys.profile_news.tr(),
+                                    style: context
+                                        .themeOwn()
+                                        .textTheme
+                                        ?.textMedium
+                                        ?.copyWith(color: AppColors.subTextColor),
+                                  )
+                                ],
+                              ),
                             ),
                           ],
                         )),
