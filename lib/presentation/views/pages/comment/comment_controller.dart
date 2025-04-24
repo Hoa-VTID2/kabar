@@ -32,9 +32,10 @@ class CommentController extends BaseController<CommentState> {
                 element.newId == newsId,
           )
           .toList();
-      final List<bool> show = [];
+      final Map<int,bool> show = {};
       for(int i =0; i<comments.length;i++) {
-        show.add(false);
+        show[comments[i].id]=false;
+        //show[comments[i].id]=false;
       }
       state = state.copyWith(
           comments: comments,
@@ -94,27 +95,30 @@ class CommentController extends BaseController<CommentState> {
     );
     final List<Comment> comments = List<Comment>.from(state.comments);
     comments.add(cmt);
-    final List<bool> show = [];
-    for(int i =0; i<comments.length;i++) {
-      show.add(false);
+    // final Map<int,bool> show = [];
+    // for(int i =0; i<comments.length;i++) {
+    //   show.add(false);
+    // }
+    final Map<int,bool> oldShow = Map<int,bool>.from(state.showSubs);
+    oldShow[cmt.id]=false;
+    // for(int i=0; i<oldShow.length;i++){
+    //   show[i] = show[i] | oldShow[i];
+    // }
+    if(state.replyTo != -1) {
+      oldShow[state.replyTo]=true;
     }
-    final List<bool> oldShow = List<bool>.from(state.showSubs);
-    for(int i=0; i<oldShow.length;i++){
-      show[i] = show[i] | oldShow[i];
-    }
-    if(state.replyTo != -1) show[state.replyTo]=true;
     commentRepository.postComment(cmt);
-    state = state.copyWith(comments: comments,commentId: state.commentId + 1, content: '', replyTo: -1,showSubs: show);
+    state = state.copyWith(comments: comments,commentId: state.commentId + 1, content: '', replyTo: -1,showSubs: oldShow);
   }
 
   void showSub(int id) {
-    final List<bool> show = List.from(state.showSubs);
+    final Map<int,bool> show = Map<int,bool>.from(state.showSubs);
     show[id] = true;
     state = state.copyWith(showSubs:  show);
   }
 
   void hideSub(int id) {
-    final List<bool> show = List.from(state.showSubs);
+    final Map<int,bool> show = Map<int,bool>.from(state.showSubs);
     show[id] = false;
     state = state.copyWith(showSubs:  show);
   }

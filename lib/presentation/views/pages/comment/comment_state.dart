@@ -11,7 +11,7 @@ abstract class CommentState extends BaseState with _$CommentState {
   const factory CommentState({
     @Default(PageStatus.Loaded) PageStatus pageStatus,
     @Default([]) List<Comment> comments,
-    @Default([]) List<bool> showSubs,
+    @Default([]) Map<int,bool> showSubs,
     @Default([]) List<UserInfo> users,
     @Default(1) int newsId,
     @Default('') String content,
